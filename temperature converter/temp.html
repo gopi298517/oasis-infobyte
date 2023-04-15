@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Temperature Converter</title>
+	<style>
+		.container {
+			width: 400px;
+			margin: 0 auto;
+			background-color: #f2f2f2;
+			padding: 20px;
+			border-radius: 10px;
+		}
+
+		h1 {
+			text-align: center;
+			color: #444;
+		}
+
+		label {
+			display: block;
+			margin: 10px 0;
+			color: #666;
+		}
+
+		input[type=text] {
+			padding: 10px;
+			width: 100%;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+			font-size: 16px;
+			color: #333;
+		}
+
+		button[type=submit] {
+			padding: 10px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		button[type=submit]:hover {
+			background-color: #3e8e41;
+		}
+
+		.result {
+			background-color: #d9edf7;
+			padding: 10px;
+			border-radius: 5px;
+			color: #31708f;
+			margin-top: 20px;
+			font-size: 18px;
+			text-align: center;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Temperature Converter</h1>
+		<form>
+			<label for="celsius">Celsius</label>
+			<input type="text" id="celsius" name="celsius">
+
+			<label for="fahrenheit">Fahrenheit</label>
+			<input type="text" id="fahrenheit" name="fahrenheit">
+
+			<button type="button" onclick="convert()">Convert</button>
+		</form>
+
+		<div class="result" id="result"></div>
+	</div>
+
+	<script>
+		function convert() {
+			let celsius = parseFloat(document.getElementById("celsius").value);
+			let fahrenheit = parseFloat(document.getElementById("fahrenheit").value);
+
+			if (isNaN(celsius) && isNaN(fahrenheit)) {
+				alert("Please enter a valid temperature");
+				return;
+			}
+
+			if (!isNaN(celsius)) {
+				let result = (celsius * 9/5) + 32;
+				document.getElementById("fahrenheit").value = result.toFixed(2);
+				document.getElementById("result").innerHTML = celsius.toFixed(2) + " &#8451; = " + result.toFixed(2) + " &#8457;";
+			}
+
+			if (!isNaN(fahrenheit)) {
+				let result = (fahrenheit - 32) * 5/9;
+				document.getElementById("celsius").value = result.toFixed(2);
+				document.getElementById("result").innerHTML = fahrenheit.toFixed(2) + " &#8457; = " + result.toFixed(2) + " &#8451;";
+			}
+		}
+	</script>
+
+</body>
+</html>
